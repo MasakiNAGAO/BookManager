@@ -1,0 +1,52 @@
+body {
+    width: 880px;
+    margin: 0 auto 0 auto;
+    padding: 80px 10px 0 10px;
+}
+
+/*header周り*/
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 880px;
+    height: 65px;
+    margin: 0 auto 0 auto;
+    border-bottom: solid thin black;
+    position: fixed;
+    top: 0;
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+#headerTitle {
+    font-size: 34px;
+    font-weight: bold;
+    padding-left: 10px;
+}
+
+#headerTitle>a {
+    text-decoration: none;
+    font-family: "Serif";
+    color: black;
+}
+
+#headerTitle>a:hover {
+    color: rgb(141, 141, 141);
+}
+
+/*main周り*/
+main {
+    padding: 0 6px;
+}
+
+.child {
+    margin-left: 15px;
+}
+
+/*footer周り*/
+footer {
+    border-top: solid thin black;
+    margin-top: 20px;
+    padding: 0 10px;
+    font-size: 8px;
+}
