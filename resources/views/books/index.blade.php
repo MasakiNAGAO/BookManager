@@ -3,7 +3,7 @@
 @section('content')
 <main>
     <div>
-        <h1><i class="fa-solid fa-bookmark"></i>　気になる本</h1>
+        <h1><i class="fa-solid fa-book"></i>　登録済み書籍一覧</h1>
         <div class="child">
             @if($books !== null)
             <table class="table fixed-table mt-5">
@@ -48,10 +48,7 @@
             </table>
             @endif
         </div>
-    </div>
-    <br>
-    <div>
-        <a href={{ route('books.index') }}>登録済み書籍一覧 <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+        {{$books->links()}}
     </div>
 </main>
 @endsection

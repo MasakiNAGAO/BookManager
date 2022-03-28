@@ -8,7 +8,7 @@ use App\Tag;
 
 class WebController extends Controller
 {
-    public function index(Book $book, Tag $tag){
+    public function index(){
         $books=Book::all();
         $tags=Tag::all();
         

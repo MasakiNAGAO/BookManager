@@ -1,0 +1,74 @@
+@extends('layouts.app')
+
+@section('content')
+<main>
+    <div> // 左列
+        <div class="book_img">
+            <img src="{{$book->image}}">
+        </div>
+        <div class="link">
+            <li>
+                <ul><a>Amazon.co.jp</a></ul>
+                <ul><a>日本の古本屋</a></ul>
+                <ul><a>BookFinder</a></ul>
+                <ul><a>国会図書館サーチ</a></ul>
+                <ul><a>CiNiiBooks</a></ul>
+            </li>
+        </div>
+    </div>
+    <div> // 右列
+        <table>
+            <tbody>
+                <tr>
+                    <th>書名</th>
+                    <td>{{$book->name}}</td>
+                </tr>
+                <tr>
+                    <th>著者</th>
+                    <td>{{$book->author}}</td>
+                </tr>
+                <tr>
+                    <th>出版年</th>
+                    <td>{{$book->publish_date}}</td>
+                </tr>
+                <tr>
+                    <th>出版社</th>
+                    <td>{{$book->publisher}}</td>
+                </tr>
+                @if($book->isbn!==null)
+                <tr>
+                    <th>ISBN</th>
+                    <td>{{$book->isbn}}</td>
+                </tr>
+                @endif
+                @if($book->issn!==null)
+                <tr>
+                    <th>ISSN</th>
+                    <td>{{$book->issn}}</td>
+                </tr>
+                @endif
+                <tr>
+                    <th>ページ数</th>
+                    <td>{{$book->page_count}}</td>
+                </tr>
+                <tr>
+                    <th>購入価格</th>
+                    <td>{{$book->price}}</td>
+                </tr>
+                <tr>
+                    <th>言語</th>
+                    <td>{{$book->language}}</td>
+                </tr>
+                <tr>
+                    <th>販促文</th>
+                    <td>{{$book->blurb}}</td>
+                </tr>
+                <tr>
+                    <th>状態</th>
+                    <td>{{$book->reading_state}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</main>
+@endsection

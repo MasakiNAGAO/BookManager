@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
-<div>
+<main>
     <div>
-        <h1>買った本</h1>
-        <div>
+        <h1><i class="fa-solid fa-cart-shopping"></i>　買った本</h1>
+        <div class="child">
             @if($books !== null)
             <table class="table fixed-table mt-5">
                 <thead>
@@ -49,8 +49,9 @@
             @endif
         </div>
     </div>
+    <br>
     <div>
-        <a href={{ route('books.index') }}>登録済み書籍一覧</a>
+        <a href={{ route('books.index') }}>登録済み書籍一覧 <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
     </div>
-</div>
+</main>
 @endsection

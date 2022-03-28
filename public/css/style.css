@@ -1,27 +1,26 @@
 body {
     width: 880px;
     margin: 0 auto 0 auto;
-    padding: 80px 10px 0 10px;
+    padding: 100px 10px 0 10px;
 }
 
 /*header周り*/
 header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     width: 880px;
-    height: 65px;
+    height: 80px;
     margin: 0 auto 0 auto;
     border-bottom: solid thin black;
     position: fixed;
     top: 0;
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: rgba(255, 255, 255, 0.7);
 }
 
 #headerTitle {
+    display: flex;
+    justify-content: center;
     font-size: 34px;
     font-weight: bold;
-    padding-left: 10px;
+    padding: 15px 0;
 }
 
 #headerTitle>a {
@@ -36,17 +35,64 @@ header {
 
 /*main周り*/
 main {
-    padding: 0 6px;
+    padding: 0 6px 15px 6px;
+}
+
+h1 {
+    font-size: 22px;
+    font-weight: bold;
+    margin-top: 15px;
 }
 
 .child {
     margin-left: 15px;
 }
 
+.center {
+    text-align: center;
+}
+
+#top_image {
+    margin-left: 30px;
+}
+
+.explain {
+    line-height: 30px;
+    font-size: 17px;
+    margin: 20px 0 15px 25px;
+}
+
+#free_search {
+    margin: 20px 15px;
+}
+
+#detail_search {
+    margin-left: 30px;
+}
+
+label {
+    margin-left: 40px;
+    margin-right: 10px;
+}
+
+.from_to {
+    margin: 0 10px;
+}
+
+#detail_search_button {
+    margin-left: 20px;
+}
+
+.list_content {
+    margin: 20px 10px 0 10px;
+    font-size: 15px;
+}
+
 /*footer周り*/
 footer {
+    display: flex;
+    justify-content: center;
     border-top: solid thin black;
-    margin-top: 20px;
-    padding: 0 10px;
-    font-size: 8px;
+    padding-top: 10px;
+    font-size: 10px;
 }

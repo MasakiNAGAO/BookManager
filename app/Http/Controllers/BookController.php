@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Book;
+use App\Tag;
 use Illuminate\Http\Request;
 
 class BookController extends Controller
@@ -14,8 +15,8 @@ class BookController extends Controller
      */
     public function index()
     {
-        $books=Book::pagenate(20);
-        return view('web.index');
+        $books=Book::paginate(20);
+        return view('books.index', compact('books'));
     }
 
     /**
@@ -25,7 +26,9 @@ class BookController extends Controller
      */
     public function create()
     {
-        //
+        $tags = Tag::all();
+ 
+        return view('books.create', compact('tags'));
     }
 
     /**
@@ -36,7 +39,33 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'author' => 'required',
+            'reading_state' => 'required',
+        ],
+        [
+            'name.required' => '書名は必須です。',
+            'author.required' => '著者名は必須です。',
+            'reading_state.required' => '書籍の状態は必須です。',
+        ]);
+        
+        $book = new Book();
+        $book->name = $request->input('name');
+        $book->author = $request->input('author');
+        $book->image = $request->input('image');
+        $book->publish_date = $request->input('publish_date');
+        $book->isbn = $request->input('isbn');
+        $book->issn = $request->input('issn');
+        $book->page_count = $request->input('page_count');
+        $book->language = $request->input('language');
+        $book->publisher = $request->input('publisher');
+        $book->price = $request->input('price');
+        $book->blurb = $request->input('blurb');
+        $book->reading_state = $request->input('reading_state');
+        $book->save();
+        
+        return redirect()->route('books.index');
     }
 
     /**
@@ -47,7 +76,7 @@ class BookController extends Controller
      */
     public function show(Book $book)
     {
-        //
+        return view('books.show', compact('book'));
     }
 
     /**
@@ -58,7 +87,9 @@ class BookController extends Controller
      */
     public function edit(Book $book)
     {
-        //
+        $tags = Tag::all();
+ 
+        return view('books.create', compact('book', 'tags'));
     }
 
     /**
@@ -70,7 +101,32 @@ class BookController extends Controller
      */
     public function update(Request $request, Book $book)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'author' => 'required',
+            'reading_state' => 'required',
+        ],
+        [
+            'name.required' => '書名は必須です。',
+            'author.required' => '著者名は必須です。',
+            'reading_state.required' => '書籍の状態は必須です。',
+        ]);
+        
+        $book->name = $request->input('name');
+        $book->author = $request->input('author');
+        $book->image = $request->input('image');
+        $book->publish_date = $request->input('publish_date');
+        $book->isbn = $request->input('isbn');
+        $book->issn = $request->input('issn');
+        $book->page_count = $request->input('page_count');
+        $book->language = $request->input('language');
+        $book->publisher = $request->input('publisher');
+        $book->price = $request->input('price');
+        $book->blurb = $request->input('blurb');
+        $book->reading_state = $request->input('reading_state');
+        $book->update();
+        
+        return redirect()->route('books.index');
     }
 
     /**
@@ -81,7 +137,9 @@ class BookController extends Controller
      */
     public function destroy(Book $book)
     {
-        //
+        $book->delete();
+        
+        return redirect()->route('books.index');
     }
 
     public function interesting()
