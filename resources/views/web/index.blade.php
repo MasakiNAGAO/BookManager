@@ -4,15 +4,20 @@
 <main>
     <div>
         <h1><i class="fa-solid fa-magnifying-glass"></i>　新しい本を探す</h1>
-        <div id="free_search" class="child input-group mb-3">
-            <input type="text" class="form-control" placeholder="フリーワード">
-            <button class="btn btn-primary" type="button" id="button-addon2">検索</button>
-        </div>
+
+        <form method="POST" action="/result">
+            @csrf
+            <div id="free_search" class="child input-group mb-3">
+                <input type="text" name="keyword" class="form-control" placeholder="フリーワード">
+                <button class="btn btn-primary" type="submit" id="button-addon2">検索</button>
+            </div>
+        </form>
+      
         <div class="child accordion">
             <div data-toggle="collapse" data-target="#target1" aria-expand="false" aria-controls="#target1">&nbsp;&nbsp;<i class="fa-solid fa-plus"></i> 詳細検索</div>
             <div class="collapse" id="target1">
                 <div id="detail_search">
-                    <form method="POST" action="/books" class="mb-2">
+                    <form method="POST" action="/result" class="mb-2">
                         @csrf
                         <div class="form-inline mt-2 mb-2 row">
                             <label for="book-name" class="d-flex justify-content-start">書名</label>
@@ -103,7 +108,7 @@
     </div>
     <br>
     <div>
-        <h1><i class="fa-solid fa-book"></i>　<a href="{{ route('books.index') }}">登録済み書籍一覧 <i class="fa-solid fa-arrow-up-right-from-square"></i></a></h1>
+        <h1><i class="fa-solid fa-book"></i><a href="{{ route('books.index') }}">　登録済み書籍一覧 <i class="fa-solid fa-arrow-up-right-from-square"></i></a></h1>
     </div>
 </main>
 @endsection
