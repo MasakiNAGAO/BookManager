@@ -59,9 +59,10 @@
             <a class="list_content" href="{{ route('book.read') }}">読んだ本 <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
             @if($tags !== null)
             @foreach($tags as $tag)
-            <a class="list_content" href="{{ route('tags.index', ['tag' => $tag->id]) }}">{{$tag->name}}</a>    
+            <a class="list_content" href="/tags/{{$tag->id}}">{{$tag->name}}</a>    
             @endforeach
             @endif
+            <a class="list_content" href="/tags/create">新規タグ登録</a>
         </div>
     </div>
     <br>

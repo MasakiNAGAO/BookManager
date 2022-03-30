@@ -12,4 +12,8 @@ class Book extends Model
     public function memos(){
         return $this->hasMany('App\Memo');
     }
+    
+    public function users(){
+        return $this->belongsTo('App\User');
+    }
 }

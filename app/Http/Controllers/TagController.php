@@ -24,7 +24,7 @@ class TagController extends Controller
      */
     public function create()
     {
-        //
+        return view('tags.create');
     }
 
     /**
@@ -35,7 +35,18 @@ class TagController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+          'name' => 'required',
+        ],
+        [
+          'name.required' => 'タグ名は必須です',
+        ]);
+        
+        $tag = new Tag();
+        $tag->name = $tag->input('name');
+        $tag->save();
+        
+        return redirect()->route('web.index');
     }
 
     /**
@@ -46,7 +57,7 @@ class TagController extends Controller
      */
     public function show(Tag $tag)
     {
-        //
+        return view('tags.show', compact('tag'));
     }
 
     /**
@@ -57,7 +68,7 @@ class TagController extends Controller
      */
     public function edit(Tag $tag)
     {
-        //
+        return view('tags.edit', compact('tag'));
     }
 
     /**
@@ -69,7 +80,22 @@ class TagController extends Controller
      */
     public function update(Request $request, Tag $tag)
     {
-        //
+        $request->validate([
+          'name' => 'required',
+        ],
+        [
+          'name.required' => 'タグ名は必須です',
+        ]);
+        
+        $tag->name = $tag->input('name');
+        if ($tag->input('share_flag') === 'yes'){
+            $tag->share_flag = true;
+        } else if ($tag->input('share_flag') === 'no'){
+            $tag->share_flag = false;
+        }
+        $tag->update();
+        
+        return redirect()->route('web.index');
     }
 
     /**
@@ -80,6 +106,7 @@ class TagController extends Controller
      */
     public function destroy(Tag $tag)
     {
-        //
+        $tag->delete();
+        return redirect()->route('web.index');
     }
 }

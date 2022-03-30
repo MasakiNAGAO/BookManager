@@ -20,7 +20,7 @@
         <p>「{{ $keyword }}」の検索結果</p>
         <hr>
         @foreach ($items as $item)
-            <h2>{{ $item['volumeInfo']['title']}}</h2>
+            <h2>{{ $item['volumeInfo']['title']}}　@if (array_key_exists('previewLink', $item['volumeInfo']))[<a href="{{$item['volumeInfo']['previewLink']}}" target="_blank" rel="noopener noreferrer">試し読み</a>]@endif</h2>
             @if (array_key_exists('subtitle', $item['volumeInfo']))
             <h3>{{ $item['volumeInfo']['subtitle']}}</h3>
             @endif
@@ -62,6 +62,8 @@
                 <b>概要：</b>{{ $item['volumeInfo']['description']}}<br>
             @endif
             <br>
+            <a href="/books/create"></a>
+            <button type="button" class="btn btn-outline-primary">この本を登録する</button>
             <hr>
         @endforeach
     @endif
