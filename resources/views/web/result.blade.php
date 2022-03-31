@@ -62,8 +62,49 @@
                 <b>概要：</b>{{ $item['volumeInfo']['description']}}<br>
             @endif
             <br>
-            <a href="/books/create"></a>
-            <button type="button" class="btn btn-outline-primary">この本を登録する</button>
+            
+            <form method="POST" action="/books" class="mb-5">
+                @csrf
+                <input type="hidden" name="title" value="{{$item['volumeInfo']['title']}}
+                @if (array_key_exists('subtitle', $item['volumeInfo']))
+                    ：{{ $item['volumeInfo']['subtitle']}}
+                @endif">
+                @if (array_key_exists('imageLinks', $item['volumeInfo']))
+                    <input type="hidden" name="image" value="{{$item['volumeInfo']['imageLinks']['thumbnail']}}">
+                @endif
+                @if (array_key_exists('publishedDate', $item['volumeInfo']))
+                    <input type="hidden" name="publish_date" value="{{$item['volumeInfo']['publishedDate']}}">
+                @endif
+                @if (array_key_exists('industryIdentifiers', $item['volumeInfo']))
+                    @foreach ($item['volumeInfo']['industryIdentifiers'] as $industryIdentifier)
+                        @if ($industryIdentifier['type']==='ISBN_13')
+                        <input type="hidden" name="isbn" value="{{$industryIdentifier['identifier']}}">
+                        @break
+                        @endif
+                        @if ($industryIdentifier['type']==='ISBN_10')
+                        <input type="hidden" name="isbn" value="{{$industryIdentifier['identifier']}}">
+                        @break
+                        @endif
+                        @if ($industryIdentifier['type']==='ISSN')
+                        <input type="hidden" name="issn" value="{{$industryIdentifier['identifier']}}">
+                        @break
+                        @endif
+                    @endforeach
+                @endif
+                @if (array_key_exists('pageCount', $item['volumeInfo']))
+                    <input type="hidden" name="page_count" value="{{$item['volumeInfo']['pageCount']}}">
+                @endif
+                @if (array_key_exists('language', $item['volumeInfo']))
+                    <input type="hidden" name="language" value="{{$item['volumeInfo']['language']}}">
+                @endif
+                @if (array_key_exists('description', $item['volumeInfo']))
+                    <input type="hidden" name="blurb" value="{{$item['volumeInfo']['description']}}">
+                @endif
+                <input type="hidden" name="reading_state" value="interesting">
+                
+                <button type="submit" class="btn btn-outline-primary">この本を登録する</button>
+            </form>
+
             <hr>
         @endforeach
     @endif

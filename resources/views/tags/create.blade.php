@@ -16,11 +16,14 @@
 
     <hr>
 
-    <form method="POST" action="/tags/create" class="mb-5">
+    <form method="POST" action="/tags" class="mb-5">
         @csrf
         <div class="form-inline mt-4 mb-4 row">
             <label for="tag-name" class="col-2 d-flex justify-content-start">タグ名</label>
             <input type="text" name="name" id="tag-name" class="form-control col-8">
+        </div>
+        <div class="d-flex justify-content-end">
+            <button type="submit" class="w-25">タグを登録</button>
         </div>
     </form>
 </div>

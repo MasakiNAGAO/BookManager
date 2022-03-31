@@ -65,7 +65,7 @@ class BookController extends Controller
         $book->reading_state = $request->input('reading_state');
         $book->save();
         
-        return redirect()->route('books.index');
+        return redirect()->route('books.show', compact('book'));
     }
 
     /**
